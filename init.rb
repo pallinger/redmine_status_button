@@ -1,6 +1,6 @@
 require 'redmine'
 
-require_dependency 'issues_status_hook'
+require File.expand_path('lib/issue_status_hook', __dir__)
 
 Redmine::Plugin.register :status_button do
   name 'Redmine Status Button plugin'
