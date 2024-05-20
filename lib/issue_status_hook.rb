@@ -14,6 +14,7 @@ class IssueStatusHook < Redmine::Hook::ViewListener
 		plugin = Redmine::Plugin.find(:status_button)
 		setting = Setting["plugin_#{plugin.id}"] || plugin.settings['default']
 		status_to_user = {}
+		return if setting['status_assigned_to'].nil?
 		setting['status_assigned_to'].each { |s, a|
 			unless a.blank?
 				f = issue.custom_field_values.find { |f| f.custom_field_id == Integer(a) }
